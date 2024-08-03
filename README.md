@@ -38,51 +38,7 @@ Read about the [theory](https://listendev.github.io/argus/dev/overview/theory/) 
 Best way to try argus out, for now, is to use the provided docker container image, like described below, and check the stdout file (`/var/log/argus/argus.log`) for the detections output.
 
 ```shell
-docker run                                                   \
---name=argus                                                 \
---privileged                                                 \
---rm                                                         \
---pid=host                                                   \
---cgroupns=host                                              \
---network=host                                               \
--v /sys:/sys:ro                                              \
--v /sys/fs/bpf:/sys/fs/bpf:rw                                \
--v /var/log/argus:/var/log/argus:rw                          \
--d rafaeldtinoco/argus:v0.0                                  \
---stdout /var/log/argus/argus.log                            \
---stderr /var/log/argus/argus.err                            \
---log quiet                                                  \
---mode normal                                                \
---extension argus                                            \
---plugin  argus:procfs                                       \
---plugin  argus:simple                                       \
---plugin  argus:netflows                                     \
---plugin  argus:detections                                   \
---printer argus:simple:stdout                                \
---event   argus:netflows:netflow                             \
---event   argus:detections:capabilities_modification         \
---event   argus:detections:code_modification_through_procfs  \
---event   argus:detections:core_pattern_access               \
---event   argus:detections:cpu_fingerprint                   \
---event   argus:detections:credentials_files_access          \
---event   argus:detections:filesystem_fingerprint            \
---event   argus:detections:java_debug_wire_proto_load        \
---event   argus:detections:java_libinstrument_load           \
---event   argus:detections:machine_fingerprint               \
---event   argus:detections:os_fingerprint                    \
---event   argus:detections:os_network_fingerprint            \
---event   argus:detections:os_status_fingerprint             \
---event   argus:detections:package_repo_config_modification  \
---event   argus:detections:pam_config_modification           \
---event   argus:detections:sched_debug_access                \
---event   argus:detections:shell_config_modification         \
---event   argus:detections:ssl_certificate_access            \
---event   argus:detections:sudoers_modification              \
---event   argus:detections:sysrq_access                      \
---event   argus:detections:unprivileged_bpf_config_access && \
-echo ""                                                   && \
-echo "Argus is running, check /var/log/argus/argus.log."  && \
-echo "To stop, run: docker stop argus"
+curl -s https://raw.githubusercontent.com/listendev/argus-releases/main/argus.sh | sh -
 ```
 
 ### GitHub Integration
