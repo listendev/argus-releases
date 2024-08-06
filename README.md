@@ -38,7 +38,7 @@ Read about the [theory](https://listendev.github.io/argus/dev/overview/theory/) 
 Best way to try argus out, for now, is to use the provided docker container image, like described below, and check the stdout file (`/var/log/argus/argus.log`) for the detections output.
 
 ```shell
-curl -s https://raw.githubusercontent.com/listendev/argus-releases/main/argus.sh | sh -
+curl -s https://listendev.github.io/argus/dev/argus.sh | sh
 ```
 
 ### GitHub Integration

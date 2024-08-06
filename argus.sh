@@ -56,7 +56,27 @@ clean() {
     sudo rm -f $STDOUT $STDERR $EVENTS
 }
 
+kernelver() {
+    major=$(uname -r | cut -d'-' -f1 | cut -d '.' -f1)
+    minor=$(uname -r | cut -d'-' -f1 | cut -d '.' -f2)
+    supported=1
+    if [[ $major -eq 5 || $major -eq 6 ]]; then
+        if [[ $major -eq 5 ]]; then
+            if [[ $minor -lt 15 ]]; then
+                supported=0
+            fi
+        fi
+    else
+        supported=0
+    fi
+    if [[ $supported -eq 0 ]]; then
+        echo "kernel version $(uname -r) not supported"
+        exit 1
+    fi
+}
+
 requirements() {
+    kernelver
     sudo mkdir -p $LOGDIR
     clean
 }
