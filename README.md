@@ -12,26 +12,11 @@ Welcome to Argus project! Argus is a runtime security tool capable of not only m
 
 Read about the [theory](https://listendev.github.io/argus/dev/overview/theory/) and [history](https://listendev.github.io/argus/dev/overview/history/) behind it.
 
-## eBPF Loader and Argus Extension
+## Architecture
 
-### eBPF Loader
+Check the [architecture](https://listendev.github.io/argus/dev/overview/architecture/) documentation.
 
-- There is a single eBPF loader that contains extensions easily added to the build tree.
-- There are multiple extensions providing different application like functionalities.
-- Each extension can have multiple plugins providing different features.
-
-### Argus Extension
-
-- The Argus extension is the main extension of the Argus project and why it was created.
-- Argus extension has **libraries** to talk to eBPF programs and to the kernel.
-- Argus works with plugins like `config`, `simple`, `procfs`, `netflows` and `detections`.
-- Both `config` and `simple` plugins are for internal use.
-- The `github` plugin is used to interact with the ListenDev API.
-- The `simple` plugin provides a stdout printer (beautified events).
-- The `netflows` provides an event called `netflow` (tasks network flows).
-- The `detections` plugin provides many different events related to security detections.
-
-## How to try it
+## How do I try it ?
 
 ### Locally
 
